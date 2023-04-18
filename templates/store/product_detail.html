@@ -69,7 +69,11 @@
             </div>
         </div> <!-- row.// -->
         <hr>
+        {% if single_product.stock <= 0 %}
+         <h5 class='text-danger'>Hết Hàng</h5>
+        {%else%}
         <a href="./product-detail.html" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+        {%endif%}
     </article> <!-- product-info-aside .// -->
             </main> <!-- col.// -->
         </div> <!-- row.// -->
@@ -103,13 +107,8 @@
                 </p>	
             </div>
         </article>
-    
-        
-    
         </div> <!-- col.// -->
     </div> <!-- row.// -->
-    
-    
     </div> <!-- container .//  -->
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
