@@ -60,4 +60,5 @@ def search(request):
         'products': products,
     }
     
+    
     return render(request, 'store/store.html', context)
