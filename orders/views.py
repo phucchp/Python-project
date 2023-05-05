@@ -24,7 +24,11 @@ def payments(request):
 
         # Move the cart items to Order Product table
     cart_items = CartItem.objects.filter(user=request.user)
-
+    
+    order.payment = payment
+    order.is_ordered = True
+    order.save()
+    
     for item in cart_items:
         orderproduct = OrderProduct()
         orderproduct.order_id = order.id
@@ -47,11 +51,6 @@ def payments(request):
         product = Product.objects.get(id=item.product_id)
         product.stock -= item.quantity
         product.save()
-
-    
-    order.payment = payment
-    order.is_ordered = True
-    order.save()
     return render(request, 'orders/payments.html')
 
 def place_order(request):
