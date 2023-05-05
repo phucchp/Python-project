@@ -45,6 +45,7 @@
 
     <!-- custom style -->
     <link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css" />
+
     <link
       href="{% static 'css/responsive.css' %}"
       rel="stylesheet"
@@ -53,7 +54,13 @@
 
     <!-- custom javascript -->
     <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+    <!-- <script src="{% static 'js/script1.js' %}" type="text/javascript"></script> -->
 
+    <!-- <script
+      src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD"
+      data-sdk-integration-source="button-factory"
+    ></script> -->
+    <!-- <script type="text/javascript" src="script.js"></script> -->
     <script type="text/javascript">
       /// some script
 
@@ -66,8 +73,8 @@
   </head>
   <body>
     <!-- narbar -->
-    {% include "includes/navbar.html" %} {% block content %} {% endblock %} 
-    {% include "includes/footer.html" %}
+    {% include "includes/navbar.html" %} {% block content %} {% endblock %} {%
+    include "includes/footer.html" %}
 
     <!-- footer -->
   </body>
