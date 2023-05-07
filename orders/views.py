@@ -15,7 +15,7 @@ from django.http import HttpResponse, JsonResponse
 def payments(request):
     body = json.loads(request.body)
     order = Order.objects.get(user=request.user, is_ordered=False, order_number=body['orderID'])
-    print(body)
+    # print(body)
     payment = Payment(
         user = request.user,
         payment_id = body['transID'],
@@ -26,13 +26,15 @@ def payments(request):
     payment.save()
 
         # Move the cart items to Order Product table
-    cart_items = CartItem.objects.filter(user=request.user)
-    
+
     order.payment = payment
     order.is_ordered = True
     order.save()
-    
+    cart_items = CartItem.objects.filter(user=request.user)
+    # print("cart_items")
+    # print(cart_items)
     for item in cart_items:
+        print("ID item :",item.id)
         orderproduct = OrderProduct()
         orderproduct.order_id = order.id
         orderproduct.payment = payment
@@ -55,25 +57,25 @@ def payments(request):
         product.stock -= item.quantity
         product.save()
         # clear card
-        CartItem.objects.filter(user=request.user).delete()
+    CartItem.objects.filter(user=request.user).delete()
+    
+    #send mail
+    mail_subject = "Thanks you for you order!"
+    message = render_to_string('orders/order_received_email.html', {
+        'user': request.user,
+        'order':order,
         
-        #send mail
-        mail_subject = "Thanks you for you order!"
-        message = render_to_string('orders/order_received_email.html', {
-            'user': request.user,
-            'order':order,
-          
-        })
+    })
 
-        to_email = request.user.email
-        send_email = EmailMessage(mail_subject, message, to=[to_email])
-        # send_email.send()        
-        
-        
-        data={
-            'order_number':order.order_number,
-            'transID':payment.payment_id
-        }
+    to_email = request.user.email
+    send_email = EmailMessage(mail_subject, message, to=[to_email])
+    # send_email.send()        
+    
+    
+    data={
+        'order_number':order.order_number,
+        'transID':payment.payment_id
+    }
         
         
         
