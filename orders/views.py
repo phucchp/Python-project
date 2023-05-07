@@ -2,11 +2,14 @@ import datetime
 from django.shortcuts import redirect, render
 from .models import Order, Payment, OrderProduct
 from store.models import Product
-
+from django.contrib.auth.tokens import default_token_generator
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 from carts.models import CartItem
 from orders.forms import OrderForm
 from orders.models import Order, Payment
 import json
+from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 def payments(request):
@@ -24,7 +27,11 @@ def payments(request):
 
         # Move the cart items to Order Product table
     cart_items = CartItem.objects.filter(user=request.user)
-
+    
+    order.payment = payment
+    order.is_ordered = True
+    order.save()
+    
     for item in cart_items:
         orderproduct = OrderProduct()
         orderproduct.order_id = order.id
@@ -47,12 +54,31 @@ def payments(request):
         product = Product.objects.get(id=item.product_id)
         product.stock -= item.quantity
         product.save()
+        # clear card
+        CartItem.objects.filter(user=request.user).delete()
+        
+        #send mail
+        mail_subject = "Thanks you for you order!"
+        message = render_to_string('orders/order_received_email.html', {
+            'user': request.user,
+            'order':order,
+          
+        })
 
-    
-    order.payment = payment
-    order.is_ordered = True
-    order.save()
-    return render(request, 'orders/payments.html')
+        to_email = request.user.email
+        send_email = EmailMessage(mail_subject, message, to=[to_email])
+        # send_email.send()        
+        
+        
+        data={
+            'order_number':order.order_number,
+            'transID':payment.payment_id
+        }
+        
+        
+        
+    # return render(request, 'orders/payments.html')
+    return JsonResponse(data)
 
 def place_order(request):
     current_user = request.user
@@ -118,3 +144,31 @@ def place_order(request):
         
 
     return render(request, 'place_order.html')
+
+
+def order_compelete(request):
+    order_number=request.GET.get('order_number')
+    transID=request.GET.get('payment_id')
+    try:
+        order=Order.objects.get(order_number=order_number,is_ordered=True)
+        ordered_products=OrderProduct.objects.filter(order_id=order.id)
+        payment=Payment.objects.get(payment_id=transID)
+        subtotal = 0
+        for i in ordered_products:
+            subtotal= subtotal + i.product_price * i.quantity
+        
+        context ={
+            'order':order,
+            'ordered_products':ordered_products,
+            'order_number':order.order_number,
+            'transID':payment.payment_id,
+            'payment':payment,
+            'subtotal':subtotal,
+        }
+        return render(request, 'orders/order_compelete.html',context)
+    except(Payment.DoesNotExist, Order.DoesNotExist):
+        return redirect('home')
+        
+    
+    
+    
