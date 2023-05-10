@@ -18,6 +18,8 @@ a:hover {
 .img-wrap {
   text-align: center;
   display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
 }
 .img-wrap img {
   max-width: 100%;
@@ -830,6 +832,11 @@ a[class*=card]:hover .title {
 [class*=card-product] a.title {
   color: #212529;
   display: block;
+  height: 3rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 [class*=card-product] a.title:hover {
   color: #3167eb;
@@ -858,6 +865,7 @@ a[class*=card]:hover .title {
 /* GRID STYLE PRODUCT ITEM */
 .card-product-grid {
   margin-bottom: 20px;
+  height: 350px;
 }
 .card-product-grid .img-wrap {
   border-radius: 0.2rem 0.2rem 0 0;
@@ -866,6 +874,10 @@ a[class*=card]:hover .title {
 .card-product-grid .info-wrap {
   overflow: hidden;
   padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
 }
 .card-product-grid .bottom-wrap {
   padding: 18px;
