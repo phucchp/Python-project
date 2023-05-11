@@ -1,17 +1,5 @@
 {% extends 'base.html' %} {% block content %}
 
-<!-- ========================= SECTION PAGETOP ========================= -->
-<section class="section-pagetop bg">
-    <div class="container">
-        {% if 'search' in request.path %}
-        <h2 class="title-page">Search result</h2>
-        {% else %}
-        <h2 class="title-page">Our Store</h2>
-        {% endif %}
-    </div>
-    <!-- container //  -->
-</section>
-<!-- ========================= SECTION INTRO END// ========================= -->
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
     <div class="container">
@@ -19,7 +7,7 @@
             <aside class="col-md-3">
                 <div class="card">
                     <article class="filter-group">
-                        <header class="card-header">
+                        <header class="card-header card-header-custom">
                             <a
                                 href="#"
                                 data-toggle="collapse"
@@ -56,7 +44,7 @@
                     </article>
                     <!-- filter-group  .// -->
                     <article class="filter-group">
-                        <header class="card-header">
+                        <header class="card-header card-header-custom">
                             <a
                                 href="#"
                                 data-toggle="collapse"
@@ -99,7 +87,7 @@
                     <!-- filter-group .// -->
 
                     <article class="filter-group">
-                        <header class="card-header">
+                        <header class="card-header card-header-custom">
                             <a
                                 href="#"
                                 data-toggle="collapse"
@@ -207,7 +195,7 @@
 
                 <nav class="mt-4" aria-label="Page navigation sample">
                     {% if products.has_other_pages %}
-                    <ul class="pagination">
+                    <ul class="pagination pagination-custom">
                         {% if products.has_previous %}
                         <li class="page-item">
                             <a
