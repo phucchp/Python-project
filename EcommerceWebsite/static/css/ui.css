@@ -15,6 +15,15 @@ a:hover {
   text-decoration: none;
 }
 
+.section-header {
+  z-index: 999;
+  background-color: #fff;
+  width: 100%;
+}
+
+section {
+}
+
 .img-wrap {
   text-align: center;
   display: block;
@@ -37,6 +46,16 @@ a:hover {
 .content-body {
   flex: 1 1 auto;
   padding: 2rem 2.3rem;
+  display: flex;
+  flex-direction: column;
+  height: 590px;
+  gap: 50px;
+}
+
+.select-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
 }
 
 /* =================  DEFINED VARIABLES =================== */
@@ -364,6 +383,14 @@ article:after,
 .section-heading {
   margin-bottom: 20px;
   margin-top: 15px;
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+h2 .title {
+  margin-bottom: 0;
 }
 
 .section-title {
@@ -432,11 +459,10 @@ p:last-child {
 .brand-wrap {
   display: block;
   width: 100px;
-  margin: auto;
 }
 
 .brand-wrap .logo, .navbar-brand .logo {
-  width: 100px;
+  width: 150px;
   display: inline-block;
 }
 
@@ -1100,7 +1126,6 @@ a[class*=card]:hover .title {
 }
 
 .card-header .title {
-  margin-bottom: 0;
   line-height: 1.5;
 }
 

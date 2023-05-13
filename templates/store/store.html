@@ -3,7 +3,7 @@
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
     <div class="container">
-        <div class="row">
+        <div class="row ">
             <aside class="col-md-3">
                 <div class="card">
                     <article class="filter-group">
@@ -23,7 +23,7 @@
                             class="filter-content collapse show"
                             id="collapse_1"
                         >
-                            <div class="card-body">
+                            <div class="card-body card-body-custom">
                                 <ul class="list-menu">
                                     <li>
                                         <a href="{% url 'store' %}"
@@ -60,7 +60,7 @@
                             class="filter-content collapse show"
                             id="collapse_4"
                         >
-                            <div class="card-body">
+                            <div class="card-body card-body-custom">
                                 <label class="checkbox-btn">
                                     <input type="checkbox" />
                                     <span class="btn btn-light"> 128GB </span>
@@ -103,7 +103,7 @@
                             class="filter-content collapse show"
                             id="collapse_3"
                         >
-                            <div class="card-body">
+                            <div class="card-body card-body-custom">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Min</label>
@@ -154,7 +154,7 @@
                 </header>
                 <!-- sect-heading -->
 
-                <div class="row">
+                <div class="row row-custom">
                     {%if products %} {% for product in products %}
                     <div class="col-md-4">
                         <figure class="card card-product-grid">
