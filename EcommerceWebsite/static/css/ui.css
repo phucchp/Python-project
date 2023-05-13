@@ -15,9 +15,20 @@ a:hover {
   text-decoration: none;
 }
 
+.section-header {
+  z-index: 999;
+  background-color: #fff;
+  width: 100%;
+}
+
+section {
+}
+
 .img-wrap {
   text-align: center;
   display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
 }
 .img-wrap img {
   max-width: 100%;
@@ -35,6 +46,16 @@ a:hover {
 .content-body {
   flex: 1 1 auto;
   padding: 2rem 2.3rem;
+  display: flex;
+  flex-direction: column;
+  height: 590px;
+  gap: 50px;
+}
+
+.select-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
 }
 
 /* =================  DEFINED VARIABLES =================== */
@@ -140,12 +161,12 @@ a:hover {
 }
 
 .hover-bg:hover {
-  background: #3167eb;
+  background: #fd3300;
   /* For browsers that do not support gradients */
   /* For Safari 5.1 to 6.0 */
   /* For Opera 11.1 to 12.0 */
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #3167eb, #3167eb);
+  background: linear-gradient(to bottom right, #fd3300, #fd3300);
   /* Standard syntax */
   transition: 0.5s;
 }
@@ -256,7 +277,7 @@ article:after,
 }
 
 .bg-blue {
-  background-color: #3167eb;
+  background-color: #fd3300;
 }
 
 .bg-red {
@@ -319,7 +340,7 @@ article:after,
 }
 
 .bg-pattern {
-  background-image: url(../images/banners/bg-pattern.svg), linear-gradient(135deg, #3167eb, #545454);
+  background-image: url(../images/banners/bg-pattern.svg), linear-gradient(135deg, #fd3300, #545454);
   background-size: cover, auto;
   background-repeat: no-repeat, repeat;
   background-position: 0px 0px, 50% 50%;
@@ -351,7 +372,7 @@ article:after,
   /* For Safari 5.1 to 6.0 */
   /* For Opera 11.1 to 12.0 */
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #3167eb, aqua);
+  background: linear-gradient(to bottom right, #fd3300, aqua);
   /* Standard syntax */
 }
 .overlay-gradient:hover:before {
@@ -362,6 +383,14 @@ article:after,
 .section-heading {
   margin-bottom: 20px;
   margin-top: 15px;
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+h2 .title {
+  margin-bottom: 0;
 }
 
 .section-title {
@@ -427,9 +456,13 @@ p:last-child {
   padding-bottom: 1rem;
 }
 
+.brand-wrap {
+  display: block;
+  width: 100px;
+}
+
 .brand-wrap .logo, .navbar-brand .logo {
-  margin-right: 7px;
-  max-height: 42px;
+  width: 150px;
   display: inline-block;
 }
 
@@ -450,7 +483,7 @@ p:last-child {
   color: #343a40;
 }
 .widget-header a:hover {
-  color: #3167eb;
+  color: #fd3300;
 }
 .widget-header i {
   color: #969696;
@@ -467,7 +500,7 @@ p:last-child {
   right: -10px;
 }
 .widget-header:hover i {
-  color: #3167eb;
+  color: #fd3300;
 }
 
 /* desktop only */
@@ -480,7 +513,7 @@ p:last-child {
   color: inherit;
 }
 .section-footer ul a:hover {
-  color: #3167eb;
+  color: #fd3300;
 }
 .section-footer .logo-footer {
   height: 40px;
@@ -640,7 +673,7 @@ p:last-child {
   color: #212529;
 }
 .itemside a.title:hover {
-  color: #3167eb;
+  color: #fd3300;
 }
 
 a.itemside {
@@ -782,7 +815,7 @@ ul.row, ul.row-sm {
 }
 .list-normal li:before {
   content: "•";
-  color: #3167eb;
+  color: #fd3300;
   display: inline-block;
   width: 1em;
   margin-left: -1em;
@@ -800,7 +833,7 @@ ul.row, ul.row-sm {
   color: #343a40;
 }
 .list-menu a:hover {
-  color: #3167eb;
+  color: #fd3300;
 }
 
 .cols-two {
@@ -823,16 +856,21 @@ a[class*=card] {
   color: initial;
 }
 a[class*=card]:hover .title {
-  color: #3167eb;
+  color: #fd3300;
 }
 
 /* BASE STYLE FOR PRODUCT ITEM */
 [class*=card-product] a.title {
   color: #212529;
   display: block;
+  height: 3rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 [class*=card-product] a.title:hover {
-  color: #3167eb;
+  color: #fd3300;
 }
 [class*=card-product] .badge {
   top: 10px;
@@ -858,6 +896,7 @@ a[class*=card]:hover .title {
 /* GRID STYLE PRODUCT ITEM */
 .card-product-grid {
   margin-bottom: 20px;
+  height: 350px;
 }
 .card-product-grid .img-wrap {
   border-radius: 0.2rem 0.2rem 0 0;
@@ -866,7 +905,16 @@ a[class*=card]:hover .title {
 .card-product-grid .info-wrap {
   overflow: hidden;
   padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px;
 }
+
+.info-wrap a {
+  transition: color 0.1s ease;
+}
+
 .card-product-grid .bottom-wrap {
   padding: 18px;
   border-top: 1px solid #e4e4e4;
@@ -884,11 +932,12 @@ a[class*=card]:hover .title {
   color: #ccc;
 }
 .card-product-grid .topbar a:hover {
-  color: #3167eb;
+  color: #fd3300;
 }
 .card-product-grid .fix-height {
-  height: 80px;
+  height: 100px;
   overflow: hidden;
+
 }
 .card-product-grid .btn-overlay {
   transition: 0.5s;
@@ -918,6 +967,7 @@ a[class*=card]:hover .title {
 .card-product-list {
   margin-bottom: 20px;
 }
+
 .card-product-list .img-wrap {
   height: 220px;
   border-radius: 0.37rem 0 0 0.37rem;
@@ -1076,7 +1126,6 @@ a[class*=card]:hover .title {
 }
 
 .card-header .title {
-  margin-bottom: 0;
   line-height: 1.5;
 }
 
@@ -1187,7 +1236,7 @@ a[class*=card]:hover .title {
   margin-top: 7px;
 }
 .tracking-wrap .step.active .icon {
-  background: #3167eb;
+  background: #fd3300;
   color: #fff;
 }
 .tracking-wrap .step.active .text {
@@ -1195,7 +1244,7 @@ a[class*=card]:hover .title {
   color: #000;
 }
 .tracking-wrap .step.active:before {
-  background: #3167eb;
+  background: #fd3300;
 }
 
 .menu-category {
@@ -1287,8 +1336,8 @@ a[class*=card]:hover .title {
   opacity: 0;
 }
 .checkbox-btn input:checked ~ .btn {
-  border-color: #3167eb;
-  background-color: #3167eb;
+  border-color: #fd3300;
+  background-color: #fd3300;
   color: #fff;
 }
 
@@ -1304,8 +1353,8 @@ a[class*=card]:hover .title {
   opacity: 0;
 }
 .btn-check input:checked ~ .btn {
-  border-color: #3167eb;
-  background-color: #3167eb;
+  border-color: #fd3300;
+  background-color: #fd3300;
   color: #fff;
 }
 .btn-check:hover:not(.active) {
@@ -1324,7 +1373,7 @@ a[class*=card]:hover .title {
   left: 18px;
 }
 .js-check.active {
-  border-color: #3167eb;
+  border-color: #fd3300;
 }
 .js-check:hover:not(.active) {
   border-color: #ccc;
@@ -1413,3 +1462,4 @@ a[class*=card]:hover .title {
 }
 
 /*# sourceMappingURL=ui.css.map */
+
