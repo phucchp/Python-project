@@ -10,6 +10,7 @@ from category.models import Category
 from django.contrib import messages
 from .forms import ReviewForm
 from orders.models import OrderProduct
+from store.models import Product,ReviewRating
 
 
 
@@ -76,13 +77,25 @@ def search(request):
         keyword = request.GET['keyword']
         if keyword:
             products = Product.objects.order_by('-created_date').filter(Q(description__icontains=keyword) | Q(product_name__icontains=keyword))
+    try:
+        context = {
+            'products': products,
+        }
+        
+        
+        return render(request, 'store/store.html', context)
+    except:
+        products=Product.objects.all().filter(is_available=True)
+        # Get the reviews
+        reviews = None
+        for product in products:
+            reviews = ReviewRating.objects.filter(product_id=product.id, status=True)
 
-    context = {
-        'products': products,
-    }
-    
-    
-    return render(request, 'store/store.html', context)
+        context = {
+            'products': products,
+            'reviews': reviews,
+        }
+        return render(request, 'home.html',context)
 
 
 def submit_review(request, product_id):
