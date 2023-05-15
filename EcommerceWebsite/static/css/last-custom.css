@@ -1,5 +1,7 @@
 .pagination-custom {
     margin-bottom: 0;
+    margin: auto;
+    width: 31%;
 }
 
 .custom-btn {

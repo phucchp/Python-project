@@ -30,6 +30,7 @@ def register(request):
 
             user = Account.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
             user.phone_number = phone_number
+            user.is_active = True
             user.save()
             # Create a user profile
             profile = UserProfile()
@@ -50,7 +51,7 @@ def register(request):
             # send_email.send()
 
             # messages.success(request, "Registration successful! We have sent to you a verification email to your email address. Please verify it.")
-            return redirect('/accounts/login/?command=verification&email=' + email)
+            return redirect('/accounts/login/')
 
     else:
         form = RegistrationForm()
