@@ -75,8 +75,8 @@
                                         </td>
                                         <td>
                                             <div class="price-wrap">
-                                                <var class="price">${{ cart_item.sub_total }}</var>
-                                                <small class="text-muted"> Đơn giá: ${{ cart_item.product.price }} </small>
+                                                <var class="price">{{ cart_item.sub_total }} VND</var>
+                                                <small class="text-muted"> Đơn giá: {{ cart_item.product.price }} VND</small>
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td class="text-right">
@@ -96,15 +96,15 @@
                             <div class="card-body">
                                 <dl class="dlist-align">
                                     <dt>Giá đơn hàng:</dt>
-                                    <dd class="text-right">${{ total }}</dd>
+                                    <dd class="text-right">{{ total }} VND</dd>
                                 </dl>
                                 <dl class="dlist-align">
                                     <dt>Thuế:</dt>
-                                    <dd class="text-right">${{ tax }}</dd>
+                                    <dd class="text-right">{{ tax }} VND</dd>
                                 </dl>
                                 <dl class="dlist-align">
                                     <dt>Tổng giá:</dt>
-                                    <dd class="text-right text-dark b"><strong>${{ grand_total }}</strong></dd>
+                                    <dd class="text-right text-dark b"><strong>{{ grand_total }} VND</strong></dd>
                                 </dl>
                                 <hr>
                                 <p class="text-center mb-3">
