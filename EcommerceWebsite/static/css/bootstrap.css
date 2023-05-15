@@ -4628,7 +4628,6 @@ input[type=button].btn-block {
 }
 .page-link:hover {
   z-index: 2;
-  color: #1244bd;
   text-decoration: none;
   background-color: #e4e4e4;
   border-color: #dee2e6;
@@ -7763,6 +7762,7 @@ button.bg-gray-light:focus {
 .mt-4,
 .my-4 {
   margin-top: 1.5rem !important;
+  width: 100%;
 }
 
 .mr-4,
