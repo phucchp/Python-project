@@ -108,7 +108,7 @@ def login(request):
                 pass
 
             auth.login(request, user)
-            messages.success(request, 'You are now logged in.')
+            messages.success(request, 'Đăng nhập thành công.')
             url = request.META.get('HTTP_REFERER')
             try:
                 query = requests.utils.urlparse(url).query
@@ -122,7 +122,7 @@ def login(request):
                 
 
         else:
-            messages.error(request, 'Invalid login credentials')
+            messages.error(request, 'Sai thông tin đăng nhập')
             return redirect('login')
         
     return render(request, 'accounts/login.html')
@@ -130,7 +130,7 @@ def login(request):
 @login_required(login_url = 'login')
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'You are logged out')
+    messages.success(request, 'Đăng xuất thành công')
     return redirect('login')
 
 def activate(request, uidb64, token):
@@ -184,7 +184,7 @@ def forgotPassword(request):
             return redirect('login')
 
         else: 
-            messages.error(request, 'Account does not exist')
+            messages.error(request, 'Tài khoản không tồn tại')
             return redirect('forgotPassword')
     return render(request, 'accounts/forgotPassword.html')
 
@@ -197,11 +197,11 @@ def resetpassword_validate(request, uidb64, token):
     
     if user is not None and default_token_generator.check_token(user, token):
         request.session['uid'] = uid
-        messages.success(request, 'Please reset your password.')
+        messages.success(request, 'Khôi phục mật khẩu')
         return redirect('resetPassword')
 
     else:
-        messages.error(request, 'This link has been expired! ')
+        messages.error(request, 'Liên kết đã quá hạn! ')
         return redirect('login')
     
 def resetPassword(request):
@@ -214,10 +214,10 @@ def resetPassword(request):
             user = Account.objects.get(pk=uid)
             user.set_password(password)
             user.save()
-            messages.success(request, 'Password reset successful!')
+            messages.success(request, 'Khôi phục mật khẩu thành công!')
             return redirect('login')
         else:
-            messages.error(request, 'Password do not match!')
+            messages.error(request, 'Mật khẩu không khớp!')
             return redirect('resetPassword')
 
     else:
@@ -239,7 +239,7 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Your profile has been updated.')
+            messages.success(request, 'Thông tin của bạn đã được cập nhật.')
             return redirect('edit_profile')
     else:
         user_form = UserForm(instance=request.user)
@@ -267,13 +267,13 @@ def change_password(request):
                 user.set_password(new_password)
                 user.save()
                 # auth.logout(request)
-                messages.success(request, 'Password updated successfully.')
+                messages.success(request, 'Cập nhật mật khẩu thành công.')
                 return redirect('change_password')
             else:
-                messages.error(request, 'Please enter valid current password')
+                messages.error(request, 'Vui lòng nhập đúng mật khẩu hiện tại')
                 return redirect('change_password')
         else:
-            messages.error(request, 'Password does not match!')
+            messages.error(request, 'Mật khẩu không khớp!')
             return redirect('change_password')
     return render(request, 'accounts/change_password.html')
     
