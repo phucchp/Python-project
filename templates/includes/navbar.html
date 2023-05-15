@@ -40,11 +40,11 @@
                             class="btn btn-primary dropdown-toggle"
                             data-toggle="dropdown"
                         >
-                            <i class="fa fa-bars"></i> Categories
+                            <i class="fa fa-bars"></i> Danh mục
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{% url 'store' %}"
-                                >All Products
+                                >Tất cả sản phẩm
                             </a>
                             {% for category in links %}
                             <a
@@ -59,7 +59,7 @@
                 </div>
                 <!-- col.// -->
                 <a href="{% url 'store' %}" class="btn btn-outline-primary"
-                    >Store</a
+                    >Cửa hàng</a
                 >
                 <div class="col-lg col-md-6 col-sm-12 col">
                     <form
@@ -72,7 +72,7 @@
                                 type="text"
                                 class="form-control"
                                 style="width: 60%"
-                                placeholder="Search"
+                                placeholder="Tìm kiếm ngay"
                                 name="keyword"
                             />
 
@@ -91,23 +91,23 @@
                         {% if user.id is not None %}
                         <div class="widget-header">
                             <small class="title text-muted"
-                                >Welcome {{user.first_name}}!
+                                >Chào mừng, {{user.first_name}}!
                             </small>
                             <div>
-                                <a href="{% url 'dashboard' %}">Dashboard</a>
+                                <a href="{% url 'dashboard' %}">Trang cá nhân</a>
                                 <span class="dark-transp"> | </span>
-                                <a href="{% url 'logout' %}"> Logout</a>
+                                <a href="{% url 'logout' %}"> Đăng xuất</a>
                             </div>
                         </div>
                         {% else %}
                         <div class="widget-header">
                             <small class="title text-muted"
-                                >Welcome guest!</small
+                                >Chào mừng!</small
                             >
                             <div>
-                                <a href="{% url 'login' %}">Sign in</a>
+                                <a href="{% url 'login' %}">Đăng nhập</a>
                                 <span class="dark-transp"> | </span>
-                                <a href="{% url 'register' %}"> Register</a>
+                                <a href="{% url 'register' %}"> Đăng ký</a>
                             </div>
                         </div>
                         {% endif %}

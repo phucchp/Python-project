@@ -67,7 +67,7 @@
 										></i>
 										<span
 											>{{single_product.countReview}}
-											reviews</span
+											Đánh giá</span
 										>
 									</span>
 								</div>
@@ -83,14 +83,14 @@
 							<div class="select-container">
 								<div class="row">
 									<div class="item-option-select">
-										<h6>Choose Color</h6>
+										<h6>Màu sắc</h6>
 										<select
 											name="color"
 											class="form-control select-form-control"
 											required
 										>
 											<option value="" disabled selected>
-												Select
+												None
 											</option>
 											{% for i in single_product.variation_set.colors %}
 											<option
@@ -104,14 +104,14 @@
 								</div>
 								<div class="row">
 									<div class="item-option-select">
-										<h6>Select Size</h6>
+										<h6>Kích thước</h6>
 										<select
 											name="size"
 											class="form-control"
 											required
 										>
 											<option value="" disabled selected>
-												Select
+												None
 											</option>
 											{% for i in single_product.variation_set.sizes %}
 											<option
@@ -125,10 +125,10 @@
 								</div>
 							</div>
                             {% if single_product.stock <= 0 %}
-                            <h5 class="text-danger">Out of Stock</h5>
+                            <h5 class="text-danger">Hết hàng</h5>
                             {% else %}
                             <button type="submit" class="btn btn-primary ">
-                                <span class="text">Add to Cart</span>
+                                <span class="text">Thêm vào giỏ hàng</span>
                                 <i class="fa fa-shopping-cart"></i>
                             </button>
                             {% endif %}
@@ -152,13 +152,12 @@
                     method="POST"
                 >
                     {% csrf_token %}
-                    <h5>Write Your Review</h5>
+                    <h5>ĐÁNH GIÁ SẢN PHẨM</h5>
 
                     <div>
                         <!-- Rating stars -->
-                        <label>How do you rate this product?</label>
-                        <br />
-                        <div class="rate">
+                        <label>Đánh giá theo sao: </label>
+                        <div class="rate" style="position: relative; top: 16px; left: 10px;">
                             <input
                                 type="radio"
                                 name="rating"
@@ -251,7 +250,7 @@
                             ></label>
                         </div>
                         <br />
-                        Review:
+                        Bình luận:
                         <textarea
                             name="review"
                             rows="4"
@@ -271,7 +270,7 @@
                         {% if user.is_authenticated %}
                         <input
                             type="submit"
-                            value="Submit Review"
+                            value="Đánh giá"
                             class="btn btn-primary"
                         />
                         {% else %}
