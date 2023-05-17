@@ -99,7 +99,7 @@ def place_order(request):
         quantity = cart_item.quantity
     tax = (2 * total) / 100
     grand_total = total + tax
-
+    
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -119,7 +119,6 @@ def place_order(request):
             data.tax = tax
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
-
             yr = int(datetime.date.today().strftime('%Y'))
             dt = int(datetime.date.today().strftime('%d'))
             mt = int(datetime.date.today().strftime('%m'))
@@ -129,6 +128,8 @@ def place_order(request):
             data.order_number = order_number
             data.save()
             order =Order.objects.get(user=current_user, is_ordered=False,order_number=order_number)
+            # grand_total=grand_total*0.000043
+            # print(grand_total)
             context={
                 'order': order,
                 'cart_items':cart_items,

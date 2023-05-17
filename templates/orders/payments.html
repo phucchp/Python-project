@@ -147,6 +147,7 @@
         
 
         var amount1 = "{{ grand_total }}"
+        amount1=Math.round(amount1*0.000043)
         var url = "{% url 'payments' %}"
         var csrftoken = getCookie('csrftoken')
         var orderID = "{{order.order_number}}"
