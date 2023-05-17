@@ -35,13 +35,13 @@
                     <div
                         class="category-wrap dropdown d-inline-block float-right"
                     >
-                        <button
+                        <!-- <button
                             type="button"
                             class="btn btn-primary dropdown-toggle"
                             data-toggle="dropdown"
                         >
                             <i class="fa fa-bars"></i> Danh mục
-                        </button>
+                        </button> -->
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{% url 'store' %}"
                                 >Tất cả sản phẩm
@@ -89,25 +89,21 @@
                 <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
                     <div class="d-flex justify-content-end mb-3 mb-lg-0">
                         {% if user.id is not None %}
-                        <div class="widget-header">
-                            <small class="title text-muted"
-                                >Chào mừng, {{user.first_name}}!
-                            </small>
-                            <div>
-                                <a href="{% url 'dashboard' %}">Trang cá nhân</a>
+                        <div class="widget-header widget-header-custom">
+                            <div class="widget-header-content">
+                                <a href="{% url 'dashboard' %}" class="btn-custom">Trang cá nhân</a>
                                 <span class="dark-transp"> | </span>
-                                <a href="{% url 'logout' %}"> Đăng xuất</a>
+                                <a href="{% url 'logout' %}" class="btn-custom">
+                                    <i class="fa-solid fa-arrow-right-from-bracket icon-logout"></i>
+                                </a>
                             </div>
                         </div>
                         {% else %}
-                        <div class="widget-header">
-                            <small class="title text-muted"
-                                >Chào mừng!</small
-                            >
-                            <div>
-                                <a href="{% url 'login' %}">Đăng nhập</a>
+                        <div class="widget-header widget-header-custom">
+                            <div class="widget-header-content">
+                                <a href="{% url 'login' %}" class="btn-custom btn-custom-login">Đăng nhập</a>
                                 <span class="dark-transp"> | </span>
-                                <a href="{% url 'register' %}"> Đăng ký</a>
+                                <a href="{% url 'register' %}" class="btn-custom btn-custom-register"> Đăng ký</a>
                             </div>
                         </div>
                         {% endif %}

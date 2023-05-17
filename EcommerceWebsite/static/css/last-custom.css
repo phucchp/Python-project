@@ -11,3 +11,125 @@
 .col-custom {
     padding-left: 0;
 }
+
+.card-product-grid-custom .info-wrap-custom {
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    transition: all 0.4s ease;
+    transform: translateY(300px);
+    background-color: #fd3300c0;
+    justify-content: unset;
+    padding-top: 12px;
+}
+
+.card-product-grid-custom {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-product-grid-custom .price-custom {
+    color: #e9e9e9;
+}
+
+.card-product-grid-custom .title-custom {
+}
+
+.card-product-grid-custom:hover .info-wrap-custom {
+    opacity: 1;
+    transform: translateY(230px);
+}
+
+.card-product-grid .img-wrap-custom {
+    height: 100%;
+}
+
+.image-product {
+    object-fit: cover;
+}
+
+.widget-header .btn-custom {
+    padding: 5px 10px;
+    background-color: #fd3300;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    color: #f1f1f1;
+    transition: all 0.2s ease-in-out;
+}
+
+.widget-header .btn-custom:hover {
+    background-color: #f03303;
+    color: #f1f1f1;
+}
+
+.widget-header-custom {
+    display: flex;
+    align-items: center;
+}
+
+.widget-header-content {
+    width: max-content;
+}
+
+.btn-custom .icon-logout {
+    color: #f1f1f1;
+}
+
+.btn-custom .icon-logout:hover {
+    color: #f1f1f1;
+}
+
+.widget-header-custom:hover i {
+    color: #f1f1f1;
+}
+
+.heading-desc {
+    margin-bottom: 4px;
+    margin-left: 0;
+}
+
+.content-body-custom {
+    position: relative;
+}
+
+.content-body-custom .btn-custom {
+    position: absolute;
+    bottom: 40px;
+    width: 520px;
+}
+
+.thumb-custom {
+    width: 100%;
+    background-color: #f03203b4;
+    position: absolute;
+    bottom: 0;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 5px;
+}
+
+.thumb-custom .image-detail-custom {
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.thumb-custom .image-detail-custom:hover {
+    transform: scale(1.1);
+}
+
+.image-detail-custom-container {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.thumb-custome-item {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-save-profile {
+    position: relative;
+    left: 708px;
+    width: 100px;
+}

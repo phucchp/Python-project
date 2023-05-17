@@ -5,7 +5,7 @@
         <!-- ============================ COMPONENT 1 ================================= -->
         <div class="card">
             <div class="row no-gutters">
-                <aside class="col-md-6">
+                <aside class="col-md-6 col-md-6-custom-detail">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap mainImage">
                             <center>
@@ -15,18 +15,20 @@
                         <!-- img-big-wrap.// -->
                     </article>
                     <!-- gallery-wrap .end// -->
-                    <ul class="thumb">
-                        <li>
+                    <ul class="thumb thumb-custom">
+                        <li class="thumb-custome-item">
                             <a
                                 href="{{ single_product.images.url }}"
                                 target="mainImage"
+                                class="image-detail-custom-container"
                                 ><img
                                     src="{{ single_product.images.url }}"
                                     alt="Product Image"
+                                    class="image-detail-custom"
                             /></a>
                             {% for i in product_gallery %}
-                            <a href="{{i.image.url}}" target="mainImage"
-                                ><img src="{{i.image.url}}" alt="Product Image"
+                            <a href="{{i.image.url}}" target="mainImage" class="image-detail-custom-container"
+                                ><img src="{{i.image.url}}" alt="Product Image" class="image-detail-custom"
                             /></a>
                             {% endfor %}
                         </li>
@@ -38,7 +40,7 @@
                         method="POST"
                     >
                         {% csrf_token %}
-                        <article class="content-body">
+                        <article class="content-body content-body-custom">
 							<div>
 								<h2 class="title">
 									{{ single_product.product_name }}
@@ -79,7 +81,6 @@
 								</div>
 							</div>
                             
-                            <p>{{ single_product.description }}</p>
 							<div class="select-container">
 								<div class="row">
 									<div class="item-option-select">
@@ -127,7 +128,7 @@
                             {% if single_product.stock <= 0 %}
                             <h5 class="text-danger">Hết hàng</h5>
                             {% else %}
-                            <button type="submit" class="btn btn-primary ">
+                            <button type="submit" class="btn btn-primary btn-custom">
                                 <span class="text">Thêm vào giỏ hàng</span>
                                 <i class="fa fa-shopping-cart"></i>
                             </button>
@@ -146,7 +147,11 @@
         <br />
 
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-6">
+                <h3 class="heading-desc">Mô tả sản phẩm</h3>
+                <p>{{ single_product.description }}</p>
+            </div>
+            <div class="col-md-6">
                 <form
                     action="{% url 'submit_review' single_product.id %}"
                     method="POST"
@@ -282,7 +287,6 @@
                         </p>
                         {% endif %}
                     </div>
-                    {% include 'includes/alerts.html' %}
                 </form>
                 <br />
 
