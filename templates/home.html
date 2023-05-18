@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %} 
 
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y-sm">
@@ -14,7 +14,7 @@
         <!-- sect-heading -->
 
         <div class="row">
-            {% for product in products %}
+            {% for product in products%}
             <div class="col-md-3">
                 <div class="card card-product-grid card-product-grid-custom">
                     <a href="{{ product.get_url }}" class="img-wrap img-wrap-custom">

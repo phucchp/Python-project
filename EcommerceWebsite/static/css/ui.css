@@ -861,7 +861,7 @@ a[class*=card]:hover .title {
 
 /* BASE STYLE FOR PRODUCT ITEM */
 [class*=card-product] a.title {
-  color: #e9e9e9;
+  color: #000000;
   display: block;
   height: 3rem;
   display: -webkit-box;

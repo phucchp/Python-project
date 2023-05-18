@@ -11,6 +11,7 @@ from django.contrib import messages
 from .forms import ReviewForm
 from orders.models import OrderProduct
 from store.models import Product,ReviewRating
+from django.contrib.humanize.templatetags.humanize import intcomma
 
 
 
@@ -44,6 +45,7 @@ def store(request, category_slug=None):
 def product_detail(request, category_slug, product_slug):
     try:
         single_product = Product.objects.get(category__slug=category_slug, slug=product_slug)
+        new_price = intcomma(int(single_product.price))
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product).exists()
     except Exception as e:
         raise e
@@ -68,6 +70,7 @@ def product_detail(request, category_slug, product_slug):
         'orderproduct': orderproduct,
         'reviews': reviews,
         'product_gallery': product_gallery,
+        'new_price': new_price,
     }
     return render(request, 'store/product_detail.html', context)
 

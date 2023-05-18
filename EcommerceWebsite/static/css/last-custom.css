@@ -13,39 +13,40 @@
 }
 
 .card-product-grid-custom .info-wrap-custom {
-    opacity: 0;
-    width: 100%;
-    position: absolute;
     transition: all 0.4s ease;
-    transform: translateY(300px);
-    background-color: #fd3300c0;
-    justify-content: unset;
-    padding-top: 12px;
 }
 
 .card-product-grid-custom {
-    position: relative;
     overflow: hidden;
 }
 
+.card-product-grid-custom .title-custom {
+    font-weight: 600;
+}
+
+/* /* .card-product-grid-custom:hover .price-custom {
+    color: #f0f0f0;
+    transition: all 0.3s ease;
+} */
+
 .card-product-grid-custom .price-custom {
-    color: #e9e9e9;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    position: relative;
+    left: -10px;
+    top: -5px;
+    background-color: #fd3300;
+    width: max-content;
+    border-radius: 999px;
+    color: #f1f1f1;
 }
 
 .card-product-grid-custom .title-custom {
+
 }
 
 .card-product-grid-custom:hover .info-wrap-custom {
-    opacity: 1;
-    transform: translateY(230px);
-}
-
-.card-product-grid .img-wrap-custom {
-    height: 100%;
-}
-
-.image-product {
-    object-fit: cover;
+   
 }
 
 .widget-header .btn-custom {
