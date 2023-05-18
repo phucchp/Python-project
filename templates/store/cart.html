@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load humanize %} 
 {% block content %}
     <section class="section-content padding-y bg" style="height: 578px;">
         <div class="container">
@@ -75,8 +75,8 @@
                                         </td>
                                         <td>
                                             <div class="price-wrap">
-                                                <var class="price">{{ cart_item.sub_total }} VND</var>
-                                                <small class="text-muted"> Đơn giá: {{ cart_item.product.price }} VND</small>
+                                                <var class="price">{{ cart_item.sub_total|intcomma }} VND</var>
+                                                <small class="text-muted"> Đơn giá: {{ cart_item.product.price|intcomma }} VND</small>
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td class="text-right">
@@ -96,15 +96,15 @@
                             <div class="card-body">
                                 <dl class="dlist-align">
                                     <dt>Giá đơn hàng:</dt>
-                                    <dd class="text-right">{{ total }} VND</dd>
+                                    <dd class="text-right">{{ total|intcomma }} VND</dd>
                                 </dl>
                                 <dl class="dlist-align">
                                     <dt>Thuế:</dt>
-                                    <dd class="text-right">{{ tax }} VND</dd>
+                                    <dd class="text-right">{{ tax|intcomma }} VND</dd>
                                 </dl>
                                 <dl class="dlist-align">
                                     <dt>Tổng giá:</dt>
-                                    <dd class="text-right text-dark b"><strong>{{ grand_total }} VND</strong></dd>
+                                    <dd class="text-right text-dark b"><strong>{{ grand_total|intcomma }} VND</strong></dd>
                                 </dl>
                                 <hr>
                                 <p class="text-center mb-3">

@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block content %} 
 
+{% extends 'base.html' %} {% load static %} {% block content %} 
+{% load humanize %}
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y-sm">
     <div class="container">
@@ -24,7 +25,7 @@
                         <a href="{{ product.get_url }}" class="title title-custom"
                             >{{ product.product_name }}</a
                         >
-                        <div class="price price-custom mt-1">{{ product.price }} VND</div>
+                        <div class="price price-custom mt-1">{{ product.price|intcomma  }} VND</div>
                         <!-- price-wrap.// -->
                         <div class="rating-star">
                             <span>
