@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %} 
 
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y-sm">
@@ -14,17 +14,17 @@
         <!-- sect-heading -->
 
         <div class="row">
-            {% for product in products %}
+            {% for product in products%}
             <div class="col-md-3">
-                <div class="card card-product-grid">
-                    <a href="{{ product.get_url }}" class="img-wrap">
-                        <img src="{{ product.images.url }}" />
+                <div class="card card-product-grid card-product-grid-custom">
+                    <a href="{{ product.get_url }}" class="img-wrap img-wrap-custom">
+                        <img src="{{ product.images.url }}" class="image-product"/>
                     </a>
-                    <figcaption class="info-wrap">
-                        <a href="{{ product.get_url }}" class="title"
+                    <figcaption class="info-wrap info-wrap-custom">
+                        <a href="{{ product.get_url }}" class="title title-custom"
                             >{{ product.product_name }}</a
                         >
-                        <div class="price mt-1">{{ product.price }} VND</div>
+                        <div class="price price-custom mt-1">{{ product.price }} VND</div>
                         <!-- price-wrap.// -->
                         <div class="rating-star">
                             <span>

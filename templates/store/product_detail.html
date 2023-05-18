@@ -1,16 +1,145 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
 <section class="section-content padding-y bg">
-  <div class="container">
-    <!-- ============================ COMPONENT 1 ================================= -->
-    <div class="card">
-      <div class="row no-gutters">
-        <aside class="col-md-6">
-          <article class="gallery-wrap">
-            <div class="img-big-wrap mainImage">
-              <center>
-                <img src="{{ single_product.images.url }}" />
-              </center>
+
+    <div class="container">
+        <!-- ============================ COMPONENT 1 ================================= -->
+        <div class="card">
+            <div class="row no-gutters">
+                <aside class="col-md-6 col-md-6-custom-detail">
+                    <article class="gallery-wrap">
+                        <div class="img-big-wrap mainImage">
+                            <center>
+                                <img src="{{ single_product.images.url }}" />
+                            </center>
+                        </div>
+                        <!-- img-big-wrap.// -->
+                    </article>
+                    <!-- gallery-wrap .end// -->
+                    <ul class="thumb thumb-custom">
+                        <li class="thumb-custome-item">
+                            <a
+                                href="{{ single_product.images.url }}"
+                                target="mainImage"
+                                class="image-detail-custom-container"
+                                ><img
+                                    src="{{ single_product.images.url }}"
+                                    alt="Product Image"
+                                    class="image-detail-custom"
+                            /></a>
+                            {% for i in product_gallery %}
+                            <a href="{{i.image.url}}" target="mainImage" class="image-detail-custom-container"
+                                ><img src="{{i.image.url}}" alt="Product Image" class="image-detail-custom"
+                            /></a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </aside>
+                <main class="col-md-6 border-left">
+                    <form
+                        action="{% url 'add_cart' single_product.id %}"
+                        method="POST"
+                    >
+                        {% csrf_token %}
+                        <article class="content-body content-body-custom">
+							<div>
+								<h2 class="title">
+									{{ single_product.product_name }}
+								</h2>
+								<div class="rating-star">
+									<span>
+										<i
+											class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}"
+											aria-hidden="true"
+										></i>
+										<i
+											class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}"
+											aria-hidden="true"
+										></i>
+										<i
+											class="fa fa-star{% if single_product.averageReview < 2.5 %}-o{% elif single_product.averageReview >= 2.5 and single_product.averageReview < 3 %}-half-o {% endif %}"
+											aria-hidden="true"
+										></i>
+										<i
+											class="fa fa-star{% if single_product.averageReview < 3.5 %}-o{% elif single_product.averageReview >= 3.5 and single_product.averageReview < 4 %}-half-o {% endif %}"
+											aria-hidden="true"
+										></i>
+										<i
+											class="fa fa-star{% if single_product.averageReview < 4.5 %}-o{% elif single_product.averageReview >= 4.5 and single_product.averageReview < 5 %}-half-o {% endif %}"
+											aria-hidden="true"
+										></i>
+										<span
+											>{{single_product.countReview}}
+											Đánh giá</span
+										>
+									</span>
+								</div>
+	
+								<div class="mb-3 price">
+									<var class="price h4"
+										>{{new_price}} VND</var
+									>
+								</div>
+							</div>
+                            
+							<div class="select-container">
+								<div class="row">
+									<div class="item-option-select">
+										<h6>Màu sắc</h6>
+										<select
+											name="color"
+											class="form-control select-form-control"
+											required
+										>
+											<option value="" disabled selected>
+												None
+											</option>
+											{% for i in single_product.variation_set.colors %}
+											<option
+												value="{{ i.variation_value | lower }}"
+											>
+												{{ i.variation_value | capfirst }}
+											</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="item-option-select">
+										<h6>Kích thước</h6>
+										<select
+											name="size"
+											class="form-control"
+											required
+										>
+											<option value="" disabled selected>
+												None
+											</option>
+											{% for i in single_product.variation_set.sizes %}
+											<option
+												value="{{ i.variation_value | lower }}"
+											>
+												{{ i.variation_value | capfirst }}
+											</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+							</div>
+                            {% if single_product.stock <= 0 %}
+                            <h5 class="text-danger">Hết hàng</h5>
+                            {% else %}
+                            <button type="submit" class="btn btn-primary btn-custom">
+                                <span class="text">Thêm vào giỏ hàng</span>
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                            {% endif %}
+                        </article>
+                        <!-- product-info-aside .// -->
+                    </form>
+                </main>
+                <!-- col.// -->
+>>>>>>> 8ee267ccb4344517265217aa8a49df5656d735f3
             </div>
             <!-- img-big-wrap.// -->
           </article>
@@ -65,7 +194,19 @@
                 </div>
               </div>
 
-              <p>{{ single_product.description }}</p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="heading-desc">Mô tả sản phẩm</h3>
+                <p>{{ single_product.description }}</p>
+            </div>
+            <div class="col-md-6">
+                <form
+                    action="{% url 'submit_review' single_product.id %}"
+                    method="POST"
+                >
+                    {% csrf_token %}
+                    <h5>ĐÁNH GIÁ SẢN PHẨM</h5>
 
               <div class="select-container">
                 <div class="row">
@@ -223,18 +364,24 @@
 						<p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span></p>
 						{% endif %} -->
 
-            {% if user.is_authenticated %}
-            <input type="submit" value="Đánh giá" class="btn btn-primary" />
-            {% else %}
-            <p>
-              Bạn cần phải đăng nhập để đánh giá sản phẩm
-              <span><a href="{% url 'login' %}">Đăng nhập ngay</a></span>
-            </p>
-            {% endif %}
-          </div>
-          {% include 'includes/alerts.html' %}
-        </form>
-        <br />
+
+                        {% if user.is_authenticated %}
+                        <input
+                            type="submit"
+                            value="Đánh giá"
+                            class="btn btn-primary"
+                        />
+                        {% else %}
+                        <p>
+                            Bạn cần phải đăng nhập để đánh giá sản phẩm
+                            <span
+                                ><a href="{% url 'login' %}">Đăng nhập ngay</a></span
+                            >
+                        </p>
+                        {% endif %}
+                    </div>
+                </form>
+                <br />
 
         {% for review in reviews %}
         <article class="box mb-3">

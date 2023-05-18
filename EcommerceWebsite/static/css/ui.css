@@ -861,7 +861,7 @@ a[class*=card]:hover .title {
 
 /* BASE STYLE FOR PRODUCT ITEM */
 [class*=card-product] a.title {
-  color: #212529;
+  color: #000000;
   display: block;
   height: 3rem;
   display: -webkit-box;
@@ -869,9 +869,9 @@ a[class*=card]:hover .title {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-[class*=card-product] a.title:hover {
+/* [class*=card-product] a.title:hover {
   color: #fd3300;
-}
+} */
 [class*=card-product] .badge {
   top: 10px;
   left: 10px;
@@ -889,8 +889,8 @@ a[class*=card]:hover .title {
   max-width: 100%;
   width: auto;
   display: inline-block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 /* GRID STYLE PRODUCT ITEM */

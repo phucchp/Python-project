@@ -31,7 +31,7 @@ class RegistrationForm(forms.ModelForm):
         confirm_password = cleaned_data.get('confirm_password')
 
         if password != confirm_password:
-            raise forms.ValidationError("Password does not match!")
+            raise forms.ValidationError("Mật khẩu không khớp, vui lòng thử lại!")
 
 class UserForm(forms.ModelForm):
     class Meta:
